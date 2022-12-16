@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-11-10 13:41:49
+ * @LastEditTime: 2022-12-16 15:23:07
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
@@ -41,5 +41,6 @@ export default defineConfig({
     alias: {
       '~': path.resolve(__dirname, 'src'),
     },
+    extensions: ['.js', '.json', '.ts']
   },
 })

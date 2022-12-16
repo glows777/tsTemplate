@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-11-10 13:26:42
+ * @LastEditTime: 2022-12-16 14:41:06
  * @FilePath: \vue-admin\src\App.vue
  * @Description:
  *
@@ -15,16 +15,7 @@
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo">
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo">
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-  <n-button>HelloWorld</n-button>
+  <RouterView></RouterView>
 </template>
 
 <style scoped>

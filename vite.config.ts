@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-16 15:23:07
+ * @LastEditTime: 2022-12-16 18:04:44
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
@@ -13,7 +13,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -21,19 +21,14 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
-        {
-          'naive-ui': [
-            'useDialog',
-            'useMessage',
-            'useNotification',
-            'useLoadingBar',
-          ],
-        },
+        'vue-router',
+        'pinia',
       ],
+      resolvers: [ElementPlusResolver()],
     }),
     Components({
       dirs: ['src/components'],
-      resolvers: [NaiveUiResolver()],
+      resolvers: [ElementPlusResolver()],
       dts: true,
     }),
   ],
@@ -41,6 +36,18 @@ export default defineConfig({
     alias: {
       '~': path.resolve(__dirname, 'src'),
     },
-    extensions: ['.js', '.json', '.ts']
+    extensions: ['.js', '.json', '.ts'],
+  },
+  server: {
+    port: 3000,
+    proxy: {
+      '/api': {
+        // 以/api开头的接口都代理到target指定的域名下
+        target: 'http://localhost:8888',
+        changeOrigin: true,
+        // 代替，后端的接口没有/api前缀，而前端有，所以要替换掉
+        // rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
 })

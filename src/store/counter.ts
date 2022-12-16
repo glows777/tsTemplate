@@ -15,11 +15,11 @@ export const useCounterStore = defineStore({
   id: 'counter', // id: 必须的，在所有 Store 中唯一
   // state: 返回对象的函数
   state: () => ({
-    count: 1
+    count: 1,
   }),
   getters: {
-    doubleCounter: (state) => state.count * 2,
-    counterPlusOne: (state) => state.count + 1
+    doubleCounter: state => state.count * 2,
+    counterPlusOne: state => state.count + 1,
   },
   actions: {
     increment() {
@@ -27,12 +27,12 @@ export const useCounterStore = defineStore({
     },
     randomizeCounter() {
       this.count = Math.round(Math.random() * 100)
-    }
+    },
   },
   // 持久化
   persist: {
     enabled: true,
-    strategies: [   
+    strategies: [
       {
         key: 'counter',
         // storage: localStorage,

@@ -4,9 +4,9 @@
  * @LastEditors: glows777 1914426389@qq.com
  * @LastEditTime: 2022-12-16 15:17:54
  * @FilePath: \vue-admin\src\main.ts
- * @Description: 
- * 
- * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved. 
+ * @Description:
+ *
+ * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved.
  */
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-16 18:04:44
+ * @LastEditTime: 2022-12-16 23:16:30
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
@@ -14,10 +14,12 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import vueJsx from "@vitejs/plugin-vue-jsx"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    vueJsx(),
     AutoImport({
       imports: [
         'vue',

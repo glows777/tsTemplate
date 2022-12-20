@@ -29,4 +29,3 @@ function closeLoading(_options: Partial<CustomOptionsType>) {
 }
 
 export default { LoadingInstance, closeLoading }
-

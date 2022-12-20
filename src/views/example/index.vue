@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-12-16 13:43:12
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-16 22:10:14
+ * @LastEditTime: 2022-12-20 17:22:25
  * @FilePath: \vue-admin\src\views\example\index.vue
  * @Description: 本页仅用于展示如何使用
  *
@@ -20,7 +20,7 @@ const randomizeCounter = () => counterStore.randomizeCounter()
 
 const getList = () => {
   getListAPI().then((res) => {
-    console.log(res)
+    // console.log(res)
   })
 }
 </script>

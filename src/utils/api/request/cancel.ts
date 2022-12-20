@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-12-16 17:02:49
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-16 22:53:24
+ * @LastEditTime: 2022-12-20 17:21:59
  * @FilePath: \vue-admin\src\utils\api\request\cancel.ts
  * @Description: 处理重复请求
  *
@@ -19,7 +19,8 @@ const pendingMap = new Map()
  * @return {*}
  */
 function getPendingKey(config: any) {
-  let { url, method, params, data } = config
+  const { url, method, params } = config
+  let { data } = config
   if (typeof data === 'string')
     data = JSON.parse(data)
   return [url, method, JSON.stringify(params), JSON.stringify(data)].join('&')

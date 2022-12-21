@@ -2,21 +2,22 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-17 00:06:48
+ * @LastEditTime: 2022-12-21 21:13:44
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
  * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved.
  */
 import path from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+
 // https://vitejs.dev/config/
-export default defineConfig({
+export default ({ command, mode }) => defineConfig({
   plugins: [
     vue(),
     vueJsx(),
@@ -52,4 +53,7 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    'process.env': loadEnv(mode, process.cwd())
+  }
 })

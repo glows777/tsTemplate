@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-12-16 16:03:18
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-16 22:58:21
+ * @LastEditTime: 2022-12-21 16:43:24
  * @FilePath: \vue-admin\src\utils\api\request\index.ts
  * @Description:
  *
@@ -21,11 +21,14 @@ import errorHandle from './error'
  * @param {LoadingOptionType} loadingOptions
  * @return {*}
  */
+// 一般来说，再纯ts文件中，用process.env去获取比较合适
+// console.log(process.env.VITE_API_URL);
+
 function request(axiosConfig: AxiosConfigType, _customOptions: Partial<CustomOptionsType>, loadingOptions: LoadingOptionType) {
   const service = axios.create({
     // todo 这里可以结合.env文件，区分生产和开发环境
-    baseURL: 'http://localhost:3000', // 设置统一的请求前缀
-    timeout: 10000, // 设置统一的超时时长 10s
+    baseURL: process.env.VITE_LOCATION_ORIGIN, // 设置统一的请求前缀
+    timeout: 1000, // 设置统一的超时时长 10s
   })
   // todo 这里可以抽出来成为一个配置项
   const customOptions = Object.assign({

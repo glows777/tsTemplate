@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-21 21:13:44
+ * @LastEditTime: 2022-12-21 21:29:04
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
@@ -17,7 +17,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
-export default ({ command, mode }) => defineConfig({
+export default ({ mode }) => defineConfig({
   plugins: [
     vue(),
     vueJsx(),
@@ -54,6 +54,6 @@ export default ({ command, mode }) => defineConfig({
     },
   },
   define: {
-    'process.env': loadEnv(mode, process.cwd())
-  }
+    'process.env': loadEnv(mode, process.cwd()),
+  },
 })

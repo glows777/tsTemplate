@@ -28,7 +28,9 @@ const getList = () => {
 </script>
 
 <template>
-  <h1 class="scss-test">.env.VITE_API_URL: =》 {{ viteApiUrl }}</h1>
+  <h1 class="scss-test">
+    .env.VITE_API_URL: =》 {{ viteApiUrl }}
+  </h1>
   <h1>Counter</h1>
   <h2>{{ counterStore.count }}</h2>
   <h3>double: {{ counterStore.doubleCounter }}</h3>
@@ -43,6 +45,7 @@ const getList = () => {
     网络请求
   </el-button>
 </template>
+
 <style scoped lang="scss">
 @import url('~/style/index.scss');
 </style>

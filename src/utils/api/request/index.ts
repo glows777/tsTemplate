@@ -2,7 +2,7 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-12-16 16:03:18
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-21 16:43:24
+ * @LastEditTime: 2022-12-27 16:42:10
  * @FilePath: \vue-admin\src\utils\api\request\index.ts
  * @Description:
  *
@@ -41,6 +41,7 @@ function request(axiosConfig: AxiosConfigType, _customOptions: Partial<CustomOpt
   _customOptions,
   )
 
+  // todo 这里可以做一个默认都得消息提示类型
   service.interceptors.request.use(
     (config) => {
       cancel.removePending(config)

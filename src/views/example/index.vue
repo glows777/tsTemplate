@@ -2,15 +2,16 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-12-16 13:43:12
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-21 21:27:17
+ * @LastEditTime: 2022-12-27 17:24:01
  * @FilePath: \vue-admin\src\views\example\index.vue
  * @Description: 本页仅用于展示如何使用
  *
  * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved.
 -->
 <script setup lang="ts">
+import { stringify } from 'querystring'
 import { useCounterStore } from '~/store/counter'
-import { getListAPI } from '~/utils/api'
+import { getListAPI, getMockUserStatus } from '~/utils/api'
 
 const counterStore = useCounterStore()
 
@@ -24,6 +25,12 @@ const getList = () => {
   getListAPI().then((res) => {
     // console.log(res)
   })
+}
+
+const labelArr: string[] = reactive([])
+const triggerMockRequest = async () => {
+  const res = await getMockUserStatus()
+  res.data.forEach((item: { label: string; value: number }) => labelArr.push(item.label))
 }
 </script>
 
@@ -44,6 +51,12 @@ const getList = () => {
   <el-button @click="getList">
     网络请求
   </el-button>
+  <el-button @click="triggerMockRequest">
+    mock请求
+  </el-button>
+  <div v-for="item in labelArr" :key="item">
+    {{ item }}
+  </div>
 </template>
 
 <style scoped lang="scss">

@@ -2,22 +2,24 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-21 21:29:04
+ * @LastEditTime: 2022-12-27 16:46:24
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
  * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved.
  */
 import path from 'path'
+import type { ConfigEnv, UserConfigExport } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
-export default ({ mode }) => defineConfig({
+export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig({
   plugins: [
     vue(),
     vueJsx(),
@@ -28,6 +30,13 @@ export default ({ mode }) => defineConfig({
         'pinia',
       ],
       resolvers: [ElementPlusResolver()],
+    }),
+    viteMockServe({
+      supportTs: true,
+      mockPath: './src/mock',
+      localEnabled: command === 'serve',
+      // prodEnabled: command !== 'dev',
+      watchFiles: true,
     }),
     Components({
       dirs: ['src/components'],
@@ -50,6 +59,11 @@ export default ({ mode }) => defineConfig({
         changeOrigin: true,
         // 代替，后端的接口没有/api前缀，而前端有，所以要替换掉
         // rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+      '/mock/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/mock/, ''),
       },
     },
   },

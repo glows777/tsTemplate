@@ -2,14 +2,13 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-12-16 13:43:12
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-27 17:24:01
+ * @LastEditTime: 2022-12-30 09:07:51
  * @FilePath: \vue-admin\src\views\example\index.vue
  * @Description: 本页仅用于展示如何使用
  *
  * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved.
 -->
 <script setup lang="ts">
-import { stringify } from 'querystring'
 import { useCounterStore } from '~/store/counter'
 import { getListAPI, getMockUserStatus } from '~/utils/api'
 
@@ -35,6 +34,8 @@ const triggerMockRequest = async () => {
 </script>
 
 <template>
+  <!-- <hello-world msg="hhh"></hello-world> -->
+  <notification type="error" message="uuuu" />
   <h1 class="scss-test">
     .env.VITE_API_URL: =》 {{ viteApiUrl }}
   </h1>

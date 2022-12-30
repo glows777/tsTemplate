@@ -2,12 +2,13 @@
  * @Author: glows777 1914426389@qq.com
  * @Date: 2022-11-10 13:01:11
  * @LastEditors: glows777 1914426389@qq.com
- * @LastEditTime: 2022-12-27 16:46:24
+ * @LastEditTime: 2022-12-28 15:13:06
  * @FilePath: \vue-admin\vite.config.ts
  * @Description:
  *
  * Copyright (c) 2022 by glows777 1914426389@qq.com, All Rights Reserved.
  */
+/// <reference types="vitest" />
 import path from 'path'
 import type { ConfigEnv, UserConfigExport } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
@@ -44,6 +45,13 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => defineConfig(
       dts: true,
     }),
   ],
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+    transformMode: {
+      web: [/.[tj]sx$/], // 支持TSX，JSX
+    },
+  },
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src'),
